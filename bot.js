@@ -1,11 +1,6 @@
-// ==================== DEVSENTINEL - $0 AUTONOMOUS AGENT ====================
-// Runs on Render FREE tier, scans GitHub for secrets, auto-creates issues
-// Created on phone in 30 minutes - HACKATHON SUBMISSION
 
-// ✅ SAFE! No secrets here!
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;  // 👈 Reads from Render, not GitHub
-const GEMINI_KEY = process.env.GEMINI_KEY;      // 👈 Same thing!
-// Import libraries from CDN (no npm install needed!)
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const GEMINI_KEY = process.env.GEMINI_KEY; 
 import { GoogleGenAI } from "https://esm.sh/@google/genai@0.2.0";
 import { Octokit } from "https://esm.sh/octokit@4.0.2";
 
@@ -15,7 +10,6 @@ const github = new Octokit({ auth: GITHUB_TOKEN });
 
 console.log("🤖 DevSentinel starting...");
 
-// ============ SECRET DETECTION ENGINE ============
 async function scanRepo(owner, repo) {
     console.log(`🔍 Scanning ${owner}/${repo}...`);
     
