@@ -28,7 +28,7 @@ async function scanRepo(owner, repo) {
             for (const file of commitData.data.files || []) {
                 if (!file.patch) continue;
                 
-                // Ask Gemini if this contains secrets
+            
                 const prompt = `Does this code contain ANY API keys, passwords, tokens, or secrets?
                 Reply ONLY with "YES" or "NO".
                 
@@ -36,7 +36,7 @@ async function scanRepo(owner, repo) {
                 ${file.patch.substring(0, 800)}`;
                 
                 const response = await ai.models.generateContent({
-                    model: "gemini-1.5-flash",
+                    model: "gemini-2.5-flash",
                     contents: [{ role: "user", parts: [{ text: prompt }] }]
                 });
                 
@@ -68,7 +68,7 @@ async function scanRepo(owner, repo) {
     }
 }
 
-// ============ AUTO-RUN ON STARTUP ============
+
 async function main() {
     console.log("🚀 DevSentinel Activated!");
     
