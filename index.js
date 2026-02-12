@@ -41,7 +41,7 @@ app.post('/gitlab/scan', async (req, res) => {
 
       // Check for secrets
       const ai = await gemini.models.generateContent({
-        model: 'gemini-1.5-flash',
+        model: 'gemini-2.5-flash',
         contents: [{
           role: 'user',
           parts: [{
